@@ -1,22 +1,26 @@
 # conda env create --file environment.yml
+# mamba env create --file environment.yml
 name: {{ cookiecutter.project_slug }}
 channels:
   - anaconda
   - conda-forge
   - defaults
 dependencies:
-  {% if cookiecutter.project_packages == "All" -%}
   - fs
   - jupyter
   - jupyterlab
-  - pathlib
-  {% endif -%}
   - pip
-  {% if cookiecutter.project_packages == "All" -%}
-  - pyprojroot
-  {% endif -%}
+  - upsetplot
+  - nbformat
   - python={{ cookiecutter.python_version }}
-  - pip:
-    {% if cookiecutter.project_packages == "All" -%}
-    - pyhere
-    {% endif -%}
+  {% if cookiecutter.project_packages == "All" -%}
+  - numpy
+  - pandas
+  - pyjanitor
+  - scikit-learn
+  - matplotlib
+  - missingno
+  - seaborn
+  {% endif -%}
+
+
